@@ -7,13 +7,16 @@ package com.algorithm.str;
 public class ReplaceSpace {
 
     public String replaceSpace(String s) {
-
-        for (int i = 0; i < s.length(); i++) {
-            if(s.charAt(i) == ' '){
-                s.charAt(i) = "%20";
+        StringBuilder stringBuilder = new StringBuilder();
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            if(chars[i] == ' '){
+                stringBuilder.append("%20");
+            }else {
+                stringBuilder.append(chars[i]);
             }
         }
-
+        return stringBuilder.toString();
     }
 
 }
