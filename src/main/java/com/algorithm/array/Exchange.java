@@ -14,7 +14,7 @@ public class Exchange {
     public static int[] exchange(int[] nums) {
         /**
          * 思路，判断第一个数是奇数还是偶数，走
-         * 不同的逻辑，
+         * 不同的逻辑，aaaaa
          * 如果是奇数，那么和后一个数相加
          *      如果是偶数，那么说明该数是奇数
          *      如果是奇数，那么说明该数是偶数
