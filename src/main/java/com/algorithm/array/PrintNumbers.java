@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 面试题17. 打印从1到最大的n位数
  */
-@Slf4j
+//@Slf4j
 public class PrintNumbers {
 
     public static int[] printNumbers(int n) {
@@ -30,7 +30,7 @@ public class PrintNumbers {
             System.out.println(a);
         }
         System.out.println(ints.toString());
-        log.info("result:{}",ints.toString());
+//        log.info("result:{}",ints.toString());
     }
 
 }
