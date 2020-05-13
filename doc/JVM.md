@@ -34,284 +34,58 @@
 
 #### 1.1     方法区
 
-#### 1.2     虚拟机栈JVM Stacks
+方法区与Java堆一样，是各个**线程共享**的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。虽然Java虚拟机规范把方法区描述为堆的一个逻辑部分，但是它却有一个别名叫做Non-Heap（非堆），目的是与Java堆区分开来。
+
+- 常量池
+
+  运行时常量池时方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有一项信息是常量池，用于存放编译期生成的各种字面量和符号引用，这部分内容将在类加载后进入方法区的运行时常量池中存放
+
+#### 1.2     虚拟机栈
 
 Java虚拟机栈是**线程私有**的，它的生命周期与线程相同。虚拟机栈描述的是J**ava方法执行的内存模型**：每个方法在执行的同时都会创建一个栈帧，用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程。
 
 #### 1.3     本地方法栈
+
+本地方法栈与虚拟机栈锁发挥的作用是非常相似的，它们之间的区别是：
+
+- 虚拟机栈为虚拟机执行Java方法（也就是字节码）服务
+- 本地方法栈则为虚拟机使用到的Native方法服务
+
 #### 1.4     堆
 
-Java堆是Java虚拟机所管理的内存中最大的一块。堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配
+Java堆是Java虚拟机所管理的内存中最大的一块。堆是被所有**线程共享**的一块内存区域，在虚拟机启动时创建。此内存区域的**唯一目的就是存放对象实例**，几乎所有的对象实例都在这里分配内存。
+
+Java堆可以处于物理上不连续的内存空间中，只要逻辑上是连续的即可。
+
+![1589383222531](pic\\1589383222531.png)
+
+- S0 ：survivor from
+- S1：survivor to ，S0和S1是大小相等的两块区域，在同一时间节点上只有一块区域是有数据的
+- Metaspace：Class、Package、Method、Field、字节码、常量池、符号引用等等
+- CCS：压缩类空间，存放32位指针的Class
+- CodeCache：JIT编译后的本地代码、JNI使用的C代码
 
 #### 1.5     程序计数器 PC Register
 
 JVM支持多线程同时执行，每一个线程都有自己的PC Register,线程正在执行的方法叫做当前方法，如果是java代码，PC Register里面存放的就是当前正在执行的指令的地址，如果是c语言，则为空
 
-### 2.   并发编程技术应用
-#### 2.1     自定义线程池实现异步落库
 
-对于任务奖品明细进行异步落库，落库失败写本地文件，核心线程数和任务线程数，需要根据线上的实际耗时进行调整，一般来说最佳线程数=（线程等待时间与线程cpu时间之比+1）*cpu数 （这个地方多写一点论据，公式数学化一点，简单直观，给一个实际值，或者真实例子）
+## 二、 JVM常用参数
 
-```java
-@Data
-@Component
-public class QueryTaskManager {
-    @Value("${com.oppo.bot.common.activity.corePoolSize:100}")
-    private  int corePoolSize ;
-    private static final long DEFAULT_KEEP_ALIVE_SECONDS = 10;
-    @Value("${com.oppo.bot.common.activity.taskPoolSize:500}")
-    private int taskPoolSize;
-    private BlockingQueue<Runnable> WORK_QUEUE;
-    private ThreadPoolExecutor threadPoolExecutor;
+- -Xms	最小堆内存
+- -Xmx    最大堆内存
+- -XX:NewSize    新生代大小
+- -XX:MaxNewSize    新生代最大的大小
+- -XX:NewRatio    new区和old区的比例
+- -XX:SurvivorRatio    eden区和survivor区的比例
+- -XX:MetaspaceSize    
+- -XX:MaxMetaspaceSize    
+- -XX:+UseCompressedClassPointers    是否启用压缩类指针，启用就会产生ccs,默认最大一个G
+- -XX:CompressedClassSpaceSize    设置压缩类大小
+- -XX:InitialCodeCacheSize
+- -XX:ReservedCodeCacheSize
 
-    @PostConstruct
-    public void init() {
-        if (taskPoolSize < corePoolSize) {
-            taskPoolSize = corePoolSize;
-        }
-        WORK_QUEUE = new LinkedBlockingDeque(taskPoolSize);
-        threadPoolExecutor = new ThreadPoolExecutor(
-                corePoolSize,
-                taskPoolSize,
-                DEFAULT_KEEP_ALIVE_SECONDS,
-                TimeUnit.SECONDS,
-                WORK_QUEUE,
-                new ThreadFactoryBuilder().setNameFormat("task-pool-thread-%d").build());
-    }
-    @PreDestroy
-    public void close() {
-        if (threadPoolExecutor != null) {
-            threadPoolExecutor.shutdown();
-        }
-    }
-}
-
-private void asynInsertDB(AwardRequest awardRequest) {
-        threadPool.getThreadPoolExecutor().execute(() -> {
-            try {
-                String currentYMD = ActTimeUtil.getCurrentYMD(new Date());
-                String tableName = "mission_award_info_" + currentYMD;
-                missionAwardInfoDao.insertOneMissionAwardInfoByTableName(tableName, awardRequest);
-            } catch (Exception e) {
-                lostFileUtil.saveExceptionMsgToLocation(awardRequest);
-                log.error("insert mission award error:{}", e);
-            }
-        });
-}
-```
-
-
-## 二、 编码设计
-
-### 1.   面向对象代码设计
-
-#### 1.1     自定义mapper继承通用mapper
-
-所有的自定义mapper文件，继承一个通用mapper,让通用mapper继承tk.mybatis.mapper.common包中的Mapper和MySqlMapper，Mapper和MySqlMapper中封装了大量的crud的api，简化了crud操作步骤，提升开发效率
-
-```java
-public interface MyMapper<T> extends Mapper<T>, MySqlMapper<T> {}
-
-public interface AwardPrizeInfoMapper extends MyMapper<AwardPrizeInfo> {}
-public interface AwardPoolInfoMapper extends MyMapper<AwardPoolInfo> {}
-public interface AwardLuckeyInfoMapper extends MyMapper<AwardLuckeyInfo> {}
-```
-
-
-
-### 2.   常用软件设计模式与代码重构优化
-
-#### 2.1     使用工厂和策略模式重构超长奖品类型判断分支，提升代码扩展性
-
-使用工厂模式解耦了对象的创建和使用，使用策略模式解耦了策略的定义、创建、使用，极大提高代码扩展性，原先的if else代码，被优化一行，通过策略factory调用getStrategy方法，直接拿到对应奖品类型的实现类。
-
-```java
-//定义一个奖品领取的策略工厂
-public class RecieveAwardStrategyFactory {
-
-    private static final Map<Integer,Strategy> strategies = new HashMap<>();
-
-    static{
-        strategies.put(AwardTypeEnum.REDPACKET_AWARD.getType(),new RecieveRedPacketStrategy());
-        strategies.put(AwardTypeEnum.INTEGRAL_AWARD.getType(),new RecieveIntegralStrategy());
-        strategies.put(AwardTypeEnum.KIND_AWARD.getType(),new RecieveKindAwardStrategy());
-    }
-
-    public static Strategy getStrategy(Integer type){
-        if(type == null || type.isEmpty()){
-            try {
-                throw new IllegalAccessException("type should not be empty.");
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-        return strategies.get(type);
-    }
-}    
-```
-
-```java
-//定义一个领奖策略接口
-public interface RecieveAwardStrategy {
-    int recieveAwardStrategy(ReceiveAwardRequest receiveAwardRequest);
-}
-```
-
-```java
-//领取红包策略实现类
-public class RecieveRedPacketStrategy implements RecieveAwardStrategy{
-    @Override
-    public int recieveAwardStrategy(ReceiveAwardRequest receiveAwardRequest) {
-   		//业务逻辑实现
-        ..
-    }
-}
-//领取积分策略实现类
-public class RecieveIntegralStrategy implements RecieveAwardStrategy{
-    @Override
-    public int recieveAwardStrategy(ReceiveAwardRequest receiveAwardRequest) {
-        ..
-    }
-}
-//领取实物策略实现类
-public class RecieveKindAwardStrategy implements RecieveAwardStrategy{
-    @Override
-    public int recieveAwardStrategy(ReceiveAwardRequest receiveAwardRequest) {
-        ..
-    }
-}
-...
-```
-
-
-### 3.   常用数据结构与算法应用
-
-#### 3.1      使用HashMap存储奖池和奖品集信息
-
-因为一个奖池会包含多个奖品信息，而协议会使用poolCode作为奖池标识。所以这里使用							HashMap<String, List< AwardPrizeInfo >>，key存poolCode，value存奖池对应的奖品集，在通过缓存中换取到所有奖池和奖品信息的集合时，可以通过poolCode以O(1)的时间复杂度拿到对应奖品list。
-#### 3.2     抽奖算法实现（抽奖模型）
-
-这块代码是由一名外包同学编写（修改为其他同事写的），在之前的上线过程，运营反馈中奖的概率和实际配置的中奖概率不符，很多奖品都发放不出，剩余库存过多。
-
-首先对原来的抽奖算法代码进行分析，代码如下：
-
-```java
-public PrizeReformDTO drawAlgorithm(List<PrizeReformDTO> drawList) {
-        Collections.shuffle(drawList);
-        double probability = Math.random();
-        PrizeReformDTO result = null;
-        double preProbability = 0;
-        for (PrizeReformDTO awardPrizeInfo : drawList) {
-            if (Objects.isNull(awardPrizeInfo.getLuckyRate())) {
-                log.info("中奖奖品:{},概率为空", awardPrizeInfo.getId());
-                return null;
-            }
-            float prizeRate = awardPrizeInfo.getLuckyRate();
-            prizeRate = prizeRate / 100;
-            log.info("此奖品:{},此奖品中奖概率:{},用户随机到的中奖概率:{}", awardPrizeInfo.getName(), prizeRate, probability);
-            if (probability < prizeRate) {
-                result = awardPrizeInfo;
-                log.info("中奖奖品信息:{}，rate:{}", result.getName(), (prizeRate + preProbability));
-                return result;
-            }
-        }
-        log.info("抽奖结果-未中奖");
-        return result;
-    }
-```
-
-调用我自己实现的一个概率测试方法，查看实际概率与配置概率差异结果如下：（去掉无用日志）
-
-```java
-17:55:13.525 [main] INFO TestDemo - 抽奖次数100000
-17:55:13.525 [main] INFO TestDemo - prizeId:359设置的中奖概率:0.0,实际的中奖概率:0.0
-17:55:13.525 [main] INFO TestDemo - prizeId:360设置的中奖概率:0.05,实际的中奖概率:0.01003
-17:55:13.525 [main] INFO TestDemo - prizeId:361设置的中奖概率:0.1,实际的中奖概率:0.02269
-17:55:13.525 [main] INFO TestDemo - prizeId:365设置的中奖概率:0.2,实际的中奖概率:0.05542
-17:55:13.525 [main] INFO TestDemo - prizeId:369设置的中奖概率:0.25,实际的中奖概率:0.08082
-17:55:13.525 [main] INFO TestDemo - prizeId:400设置的中奖概率:0.3,实际的中奖概率:0.1292
-17:55:13.525 [main] INFO TestDemo - 不中奖概率0.70184
-```
-
-结果可以明显看出，实际的中奖概率是远下于配置的概率的。
-
-该实现，大致的思路是
-
-1.打乱待抽奖集合
-
-2.roll一个0-1之间的概率
-
-3.遍历待抽奖集合，判断roll出来的概率是否小于奖品设置的概率，若谷小于就中奖并且return，反之不中奖
-
-这种实现的问题在于，如果中奖就return这里，因为假如说，奖品集合的size为6，中大奖概率为1/100，那么用户中大奖的概率就变成了1/100 * 1/6 = 1/600,因为用户中奖需要两个必要条件，1：roll到比0.01更小的数字；2，大奖必须排在集合的第一位。如果这个时候大奖排在第二位，而一个积分奖(高概率)排在了首位，那么就会被积分奖品给拦截掉。这就是该抽奖算法比实际设置的概率低的原因。
-
-改变后的抽奖算法，大致的实现思路为：将奖品集合按照对应的中奖概率划分到不同的区间，然后roll一个随机数，去反查这个数字落在哪个区间，代表中了哪种奖品。代码如下：
-
-```java
-// 放大倍数
-private static final int mulriple = 100000000;
-public PrizeReformDTO rebuildDrawAlgorithm(List<PrizeReformDTO> drawList) {
-
-        int lastScope = 0;
-        Collections.shuffle(drawList);
-        Map<Integer, int[]> prizeScopes = new HashMap<>();
-        for (PrizeReformDTO prize : drawList) {
-            if(prize.getLuckyRate().intValue()==0){
-                //"中奖概率为0，所以不划分区间"
-                continue;
-            }
-            int prizeId = prize.getId();
-            // 划分区间
-            int currentScope = (int) (lastScope + prize.getLuckyRate()*0.01*(new BigDecimal(mulriple)).intValue());
-            prizeScopes.put(prizeId, new int[]{lastScope + 1, currentScope});
-            lastScope = currentScope;
-        }
-        log.info("prize scopes:{}",JSON.toJSONString(prizeScopes));
-
-        // 获取1-mulriple之间的一个随机数
-        int luckyNumber = new Random().nextInt(mulriple);
-        log.info("luckyNumber:{}",luckyNumber);
-        int luckyPrizeId = 0;
-        // 查找随机数所在的区间
-        if ((null != prizeScopes) && !prizeScopes.isEmpty()) {
-            Set<Map.Entry<Integer, int[]>> entrySets = prizeScopes.entrySet();
-            for (Map.Entry<Integer, int[]> m : entrySets) {
-                int key = m.getKey();
-                if (luckyNumber >= m.getValue()[0] && luckyNumber <= m.getValue()[1]) {
-                    luckyPrizeId = key;
-                    break;
-                }
-            }
-        }
-        if(luckyPrizeId!=0){
-            for (int i = 0; i < drawList.size(); i++) {
-                if(drawList.get(i).getId().equals(luckyPrizeId)){
-                    log.info("lottery result:[prizeId:{},prizeName:{}]",luckyPrizeId,drawList.get(i).getName());
-                    return drawList.get(i);
-                }
-            }
-        }
-        log.info("lottery result：null");
-        return null;
-    }
-```
-
-抽奖算法重写，进行了一个实际中奖概率和奖品设置的中奖概率比对测试，结果如下
-
-```java
-17:49:43.787 [main] INFO TestDemo - 抽奖次数100000
-17:49:43.787 [main] INFO TestDemo - prizeId:359设置的中奖概率:0.0,实际的中奖概率:0.0
-17:49:43.787 [main] INFO TestDemo - prizeId:360设置的中奖概率:0.05,实际的中奖概率:0.05025
-17:49:43.787 [main] INFO TestDemo - prizeId:361设置的中奖概率:0.1,实际的中奖概率:0.09836
-17:49:43.787 [main] INFO TestDemo - prizeId:365设置的中奖概率:0.2,实际的中奖概率:0.20138
-17:49:43.787 [main] INFO TestDemo - prizeId:369设置的中奖概率:0.25,实际的中奖概率:0.25218
-17:49:43.787 [main] INFO TestDemo - prizeId:400设置的中奖概率:0.3,实际的中奖概率:0.2985
-17:49:43.787 [main] INFO TestDemo - 不中奖概率0.09933
-```
-
-可以发现，我们调用抽奖算法10w次的情况下，实际中奖概率和配置的概率是非常接近的。
-
-## 三、 常用框架（列一下问题点，在开头）
+## 三、 垃圾回收算法
 
 ### 1.   基础类库应用
 
