@@ -1,9 +1,6 @@
 package com.algorithm.array;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,8 +17,8 @@ public class Exchange {
          *      如果是奇数，那么说明该数是偶数
          * 由于需要不断的修改元素的位置，这里使用LinkedList
          */
-        List list1 = new ArrayList();
-        List list2 = new ArrayList();
+        List<Integer> list1 = new ArrayList<Integer>();
+        List<Integer> list2 = new ArrayList<Integer>();
 
         for (int i = 0; i < nums.length; i++) {
             if(i%2==0){
@@ -32,7 +29,7 @@ public class Exchange {
         }
         list2.addAll(list1);
 
-        Object[] objects = list2.toArray(new Object[list2.size()]);
+        Object[] objects = list2.toArray(new Object[0]);
         int[] arr = new int[objects.length];
         for (int i = 0; i < objects.length; i++) {
             arr[i] = (Integer) objects[i];
