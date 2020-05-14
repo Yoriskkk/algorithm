@@ -1,1 +1,7 @@
 代理模式：接口+真实实现类+代理类
+代理类比：商户--->明星经纪人（代理）---->明星
+动态代理有两种实现：
+1.jdk实现
+2.cglib实现
+参考博客：https://blog.csdn.net/csdnliuxin123524/article/details/81236007
+         https://blog.csdn.net/briblue/article/details/73928350
