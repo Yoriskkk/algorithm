@@ -5,7 +5,7 @@ public class MaxSlidingWindow {
     public int[] maxSlidingWindow(int[] nums, int k) {
 
         int size = nums.length;
-        if(size == 0){
+        if (size == 0) {
             return new int[0];
         }
         //1.获取结果数组的长度，nums.length - k + 1
