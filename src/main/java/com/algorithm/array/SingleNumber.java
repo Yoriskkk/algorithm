@@ -1,7 +1,7 @@
 package com.algorithm.array;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class SingleNumber {
 
@@ -23,5 +23,18 @@ public class SingleNumber {
         }
         return 0;
     }
+
+    /*public int singleNumber2(int[] nums) {
+        List<Integer> list = new ArrayList(nums.length+nums.length/3);
+        int num = nums[0];
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] == nums[]){
+
+            }
+            list.add(i,nums[i]);
+        }
+
+        return 0;
+    }*/
 
 }
