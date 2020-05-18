@@ -1,8 +1,9 @@
-package com.algorithm.array;
+package com.algorithm.dp;
 
-import java.util.ArrayList;
-import java.util.Vector;
-
+/**
+ * 动态规划，经典题目斐波那契数列
+ * 使用记忆化搜索法，缓存已经计算过的斐波那契数列。
+ */
 public class Fib {
     public static int[] memo;
 
