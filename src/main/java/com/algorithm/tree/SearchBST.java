@@ -1,12 +1,16 @@
 package com.algorithm.tree;
 
+/**
+ * 二叉树的遍历思路被限制住，值得反省。
+ */
 public class SearchBST {
-
     static boolean flag = false;
+    static TreeNode cur = null;
     public static TreeNode searchBST(TreeNode root, int val) {
 
-        TreeNode node = dfs(root,val);
-        return node;
+
+        TreeNode dfs = dfs(root, val);
+        return dfs;
     }
 
     private static TreeNode dfs(TreeNode root, int val) {
@@ -14,19 +18,13 @@ public class SearchBST {
         if(root == null){
             return null;
         }
-        TreeNode node = null;
-        if(root.val == val || f){
-            node = new TreeNode(root.val);
+        if(val < root.val){
+            return dfs(root.left,val);
         }
-        if(node == null){
-            dfs(root.left,val);
-            dfs(root.right,val);
-        }else {
-            node.left = dfs(root.left,val);
-            node.right = dfs(root.right,val);
+        if(val> root.val){
+            return dfs(root.right,val);
         }
-
-        return node;
+        return root;
     }
 
     public static void main(String[] args) {
