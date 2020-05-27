@@ -3,8 +3,8 @@ package com.algorithm.test;
 public class Demo {
     public static void main(String[] args) {
 
-        Float a = 0.2f;
-        System.out.println(a.longValue()==0);
+        String a = "1234567890";
+        System.out.println(a.substring(0,9));
 
     }
 }
