@@ -2,20 +2,27 @@ package com.algorithm.tree;
 
 public class SumNumbers {
 
+    int sum = 0;
     public int sumNumbers(TreeNode root) {
-
-        String sum = dfs(root);
-        return Integer.valueOf(sum);
+        if(root == null){
+            return 0;
+        }
+        dfs(root,0);
+        return sum;
     }
 
-    private String dfs(TreeNode root) {
+    private void dfs(TreeNode root, int father) {
+
         if(root == null){
-            return "";
+            return;
         }
-        int sum = root.val;
-        String strLeft = sum + dfs(root.left);
-        String strRight = sum + dfs(root.right);
-        return strLeft+strRight;
+        int cur = father*10 + root.val;
+        if(root.left == null && root.right == null){
+            sum +=cur;
+            return;
+        }
+        dfs(root.left,cur);
+        dfs(root.right,cur);
     }
 
 }
