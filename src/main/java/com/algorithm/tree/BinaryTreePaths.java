@@ -9,31 +9,32 @@ public class BinaryTreePaths {
     List<String> list = new ArrayList<String>();
     public List<String> binaryTreePaths(TreeNode root) {
 
-        dfs(root, null);
+        dfs(root, new StringBuilder());
         return list;
     }
 
-    private void dfs(TreeNode root , String s) {
+    private void dfs(TreeNode root , StringBuilder s) {
 
         if(root == null){
             return;
         }
 
         if(root.left == null && root.right == null){
-            if(s == null){
-                s = String.valueOf(root.val);
+            if(s.length() == 0){
+                s.append(root.val);
             }else {
-                s = s + "->" + root.val;
+                s.append("->").append(root.val);
             }
-            list.add(s);
+            list.add(s.toString());
         }
-        if(s == null){
-            s = String.valueOf(root.val);
+        if(s.length() == 0){
+            s.append(root.val);
         }else {
-            s = s + "->" + root.val;
+            s.append("->").append(root.val);
         }
+        StringBuilder temp = new StringBuilder(s);
         dfs(root.left,s);
-        dfs(root.right,s);
+        dfs(root.right,temp);
 
     }
 

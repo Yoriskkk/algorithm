@@ -6,26 +6,29 @@ import java.util.List;
 public class PathSum {
     List<List<Integer>> list = new ArrayList<List<Integer>>();
     List<Integer> innerList = new ArrayList();
-    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+    int result = 0;
 
-        dfs(root,sum,0);
-        return null;
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        dfs(root, innerList, sum);
+        return list;
     }
 
-    private void dfs(TreeNode root, int sum ,int start) {
-
-        if(root == null){
+    private void dfs(TreeNode root, List<Integer> innerList, int sum) {
+        if (root == null) {
             return;
         }
-
-        int result = start + root.val;
-        if(result == sum){
-            innerList.add(result);
-
-
+        innerList.add(root.val);
+        if (root.left == null && root.right == null) {
+            for (int i = 0; i < innerList.size(); i++) {
+                result += innerList.get(i);
+            }
+            if (result == sum) {
+                list.add(innerList);
+            }
+            result = 0;
         }
-
-
+        List temp = new ArrayList(innerList);
+        dfs(root.left, innerList, sum);
+        dfs(root.right, temp, sum);
     }
-
 }
