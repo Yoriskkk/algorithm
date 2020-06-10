@@ -1,5 +1,8 @@
 package com.algorithm.tree;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConvertBST {
 
     static int sum  = 0;
@@ -11,9 +14,7 @@ public class ConvertBST {
         if(root == null){
             return null;
         }
-
         dfs(root.right);
-
         sum += root.val;
         root.val = sum;
         dfs(root.left);

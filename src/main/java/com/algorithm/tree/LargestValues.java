@@ -28,7 +28,6 @@ public class LargestValues {
                 }
             }
             list.add(max);
-
         }
         return list;
     }
