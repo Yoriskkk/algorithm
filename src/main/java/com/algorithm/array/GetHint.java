@@ -38,7 +38,6 @@ public class GetHint {
         String guess = "7810";
         getHint(secret,guess);
 
-
     }
 
 }
