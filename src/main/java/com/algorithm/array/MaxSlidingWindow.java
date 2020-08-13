@@ -22,4 +22,30 @@ public class MaxSlidingWindow {
 
     }
 
+    //暴力法求解
+    public static int[] maxSlidingWindow2(int[] nums, int k) {
+
+
+        int length = nums.length - k + 1;
+        int[] result = new int[length];
+        for (int i = 0; i < length; i++) {
+
+            int max = Integer.MIN_VALUE;
+            for (int j = i; j < k+i; j++) {
+                max = Math.max(nums[j],max);
+            }
+            result[i] = max;
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+
+        int[] nums = new int[]{1,-1};
+        maxSlidingWindow2(nums,1);
+
+    }
+
+
 }
