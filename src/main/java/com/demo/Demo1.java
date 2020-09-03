@@ -7,7 +7,9 @@ import java.util.Stack;
 public class Demo1 {
 
     public static void main(String[] args) {
-        Stack stack = new Stack();
+        /*if(2 == null){
+
+        }*/
     }
 
 }
