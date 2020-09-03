@@ -12,7 +12,7 @@ import java.util.TreeMap;
  * 你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，那么将他们的值相加作为节点合并
  * 后的新值，否则不为NULL的节点将直接作为新二叉树的节点。
  */
-public class MergeTrees {
+public class _2MergeTrees {
 
     /**
      * 思路一：对这两颗树进行遍历，如果两个当前节点都不为null，则相加
