@@ -16,6 +16,11 @@ import java.util.Map;
  * 输出: 2
  */
 public class _7majorElement {
+    /**
+     * 思路1：使用HashMap
+     * @param nums
+     * @return
+     */
     public int majorityElement(int[] nums) {
         int condition = nums.length/2;
         Map<Integer,Integer> map = new HashMap();
@@ -32,6 +37,8 @@ public class _7majorElement {
         }
         return nums[0];
     }
+
+
 
 
 }
