@@ -19,6 +19,12 @@ public class _13isSymmetric {
 
     }
 
+    /**
+     * 解题思路，传入两个节点，分别从左边和右边开始遍历
+     * @param left
+     * @param right
+     * @return
+     */
     private static boolean dfs(TreeNode left, TreeNode right) {
 
         if(left == null && right == null){
