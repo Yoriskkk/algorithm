@@ -2,81 +2,90 @@ package com.algorithm.trie;
 
 import java.util.TreeMap;
 
-/**
- * 字典树实现
- */
 public class Trie {
 
-    private class Node{
-
+    private class Node {
+        //是否是一个单词
         private boolean isWord;
-        private TreeMap<Character,Node> next;
+        //字典树中，一个节点对应多个节点
+        private TreeMap<Character, Node> next;
 
-        public Node(){
-            isWord = false;
+        public Node(boolean isWord) {
+            this.isWord = isWord;
             next = new TreeMap<Character, Node>();
+        }
+
+        //大部分节点
+        public Node() {
+            this(false);
         }
     }
 
     private Node root;
     private int size;
 
-    public Trie(){
+    public Trie() {
         root = new Node();
         size = 0;
     }
-    /**
-     * 添加单词
-     * @param word
-     */
-    public void add(String word){
-        Node node = root;
+
+    //获取字典树中的单词数量
+    public int getSize() {
+        return size;
+    }
+
+    //往trie树中添加一个单词,非递归写法
+    public void add(String word) {
+        Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if(node.next.get(c) == null){
-                node.next.put(c,new Node());
+            if (cur.next.get(c) == null) {
+                cur.next.put(c, new Node());
             }
-            node = node.next.get(c);
+            cur = cur.next.get(c);
         }
-        if(!node.isWord){
-            node.isWord = true;
+        if (!cur.isWord) {
+            cur.isWord = true;
             size++;
         }
     }
 
-    /**
-     * 判断一个单词是否在这个trie树里面
-     * @return
-     */
+    //查询trie树中是否包含单词word
     public boolean contains(String word){
-
-        Node node = root;
+        Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if(node.next.get(c)==null){
-                return false;
+            if(cur.next.get(c) != null){
+                cur = cur.next.get(c);
             }else {
-                node = node.next.get(c);
+                return false;
             }
         }
-        return node.isWord;
+        return cur.isWord;
     }
 
-    /**
-     * 判断这个单词是否是trie树的前缀
-     * @return
-     */
+    //查看单词是否是trie树中的前缀
     public boolean isPrefix(String word){
-        Node node = root;
+
+        Node cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if(node.next.get(c)==null){
+            if(cur.next.get(c) == null){
                 return false;
             }else {
-                node = node.next.get(c);
+                cur = cur.next.get(c);
             }
         }
         return true;
+
+    }
+
+    public static void main(String[] args) {
+        Trie trie = new Trie();
+        trie.add("Hello");
+        trie.add("Help");
+        trie.contains("Help");
+        System.out.println(trie.toString());
     }
 
 }
