@@ -14,7 +14,7 @@ public class _55maxDepth {
      * @return
      */
     public int maxDepth(TreeNode root) {
-
+        return 0;
     }
 
 }
