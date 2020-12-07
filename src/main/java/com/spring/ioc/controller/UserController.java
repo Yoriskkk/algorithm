@@ -8,12 +8,14 @@ public class UserController {
     @MyAutoWired
     private UserService userService;
 
+    private String userName;
+
     public UserService getUserService() {
         return userService;
     }
 
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+//    public void setUserService(UserService userService) {
+//        this.userService = userService;
+//    }
 
 }

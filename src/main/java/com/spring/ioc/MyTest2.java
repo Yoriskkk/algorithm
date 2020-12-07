@@ -12,7 +12,6 @@ public class MyTest2 {
     public void test() throws Exception {
         UserController userController = new UserController();
         Class<? extends UserController> clazz = userController.getClass();
-        UserService userService = new UserService();
         //获取所有的属性值
         Stream.of(clazz.getDeclaredFields()).forEach(field->{
             String name = field.getName();
@@ -21,7 +20,8 @@ public class MyTest2 {
                 field.setAccessible(true);
                 Class<?> type = field.getType();
                 try {
-                    type.newInstance();
+                    Object o = type.newInstance();
+                    field.set(userController,o);
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
@@ -29,5 +29,6 @@ public class MyTest2 {
                 }
             }
         });
+        System.out.println(userController.getUserService());
     }
 }

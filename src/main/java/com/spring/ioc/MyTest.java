@@ -8,7 +8,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class MyTest {
-
     @Test
     public void test() throws Exception {
         UserController userController = new UserController();
@@ -30,6 +29,4 @@ public class MyTest {
         method.invoke(userController,userService);
         System.out.println(userController.getUserService());
     }
-
-
 }
