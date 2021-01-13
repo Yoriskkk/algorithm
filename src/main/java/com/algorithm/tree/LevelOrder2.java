@@ -4,7 +4,7 @@ import java.util.*;
 
 public class LevelOrder2 {
 
-    public List<List<Integer>> levelOrder(Node root) {
+    public static List<List<Integer>> levelOrder(Node root) {
         if(root == null){
             return Collections.emptyList();
         }
@@ -33,4 +33,7 @@ public class LevelOrder2 {
         return resultList;
     }
 
+    public static void main(String[] args) {
+
+    }
 }
