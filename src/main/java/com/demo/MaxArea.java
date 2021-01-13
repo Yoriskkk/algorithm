@@ -8,7 +8,7 @@ package com.demo;
 public class MaxArea {
 
     public int maxArea(int[] height) {
-
+        return 0;
     }
 
 }
