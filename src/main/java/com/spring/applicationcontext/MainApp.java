@@ -1,7 +1,5 @@
 package com.spring.applicationcontext;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import java.util.Collections;
 import java.util.List;
