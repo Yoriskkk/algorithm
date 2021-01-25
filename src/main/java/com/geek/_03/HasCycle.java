@@ -16,7 +16,10 @@ public class HasCycle {
      * @return
      */
     public boolean hasCycle(ListNode head) {
-
+        //单节点不能成环
+        if(head == null || head.next == null){
+            return false;
+        }
         Map<ListNode, Integer> map = new HashMap();
         while (head != null) {
             if (map.putIfAbsent(head, 1) != null) {
