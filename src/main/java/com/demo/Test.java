@@ -9,4 +9,9 @@ public class Test {
         return "finalCounter=" + finalCounter + ",\n" + "staticFinalCounter=" + staticFinalCounter;
     }
 
+    public static void main(String[] args) {
+        String str ="0,1";
+        String[] split = str.split(",");
+    }
+
 }
