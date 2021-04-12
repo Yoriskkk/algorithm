@@ -23,9 +23,10 @@ public class RemoveDuplicates {
     public int removeDuplicates(int[] nums) {
         int slow = 0;
         for (int fast = 1; fast < nums.length; fast++) {
-            if(nums[fast] == nums[slow]){
+            //该段代码可以去掉
+            /*if(nums[fast] == nums[slow]){
                 continue;
-            }
+            }*/
             if(nums[fast]>nums[slow]){
                 slow++;
                 nums[slow] = nums[fast];

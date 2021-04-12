@@ -5,6 +5,16 @@ package com.wz.week_1;
  */
 public class ReverseWords {
 
+    /**
+     * 思路2：
+     * 空间复杂度O(1)
+     * 两次reverse
+     * 第一次reverse 对整个字符串翻转
+     * 第二次reverse将子单词进行翻转
+     * @param s
+     * @return
+     */
+
     public static String reverseWords(String s) {
         StringBuilder result = new StringBuilder();
         //对字符串的首尾去掉空格，针对示例2

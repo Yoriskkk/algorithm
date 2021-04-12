@@ -13,6 +13,9 @@ public class IsPalindrome_9 {
             return false;
         }
         //2.将数字转换为字符串
+        /**
+         * 数字转字符串，5436可以对10一直取模，就可以得到6，3，4，5
+         */
         String s = String.valueOf(x);
         int left = 0;
         int right = s.length() - 1;
