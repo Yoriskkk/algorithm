@@ -19,7 +19,6 @@ public class RemoveElements {
         if (head == null) {
             return null;
         }
-        //可以先不思考头节点，尾节点
         ListNode pre = new ListNode(-1);
         pre.next = head;
         ListNode result = pre;
@@ -36,7 +35,6 @@ public class RemoveElements {
 
         return result.next;
 
-//        return result.next;
     }
 
     @Test
