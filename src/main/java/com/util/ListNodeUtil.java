@@ -12,7 +12,7 @@ public class ListNodeUtil {
             result.next = node;
             result = result.next;
         }
-        return temp;
+        return temp.next;
     }
 
 }
