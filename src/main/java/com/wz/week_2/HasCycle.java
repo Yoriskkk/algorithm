@@ -10,7 +10,10 @@ public class HasCycle {
     /**
      * 思路：
      * 1.使用hashmap存放每一个节点
-     * 2.使用快慢指针，由于如果
+     * 2.使用快慢指针，由于如果有环的话
+     *      快指针每次走两步，慢指针每次走一步
+     *      if hashCycle 那么一定会相遇
+     *      else
      * @param head
      * @return
      */
@@ -31,11 +34,19 @@ public class HasCycle {
         if(head == null || head.next == null){
             return false;
         }
+        ListNode fast = head.next.next;
+        ListNode slow = head;
+        while(fast!=null && slow!=null){
 
-        if(){
-
+            if(fast == slow){
+                return true;
+            }
+            if(fast.next!=null)
+                fast = fast.next.next;
+            else
+                return false;
+            slow = slow.next;
         }
-
 
         return false;
     }
