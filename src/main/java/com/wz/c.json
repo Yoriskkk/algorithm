@@ -1,0 +1,120 @@
+{
+  "clientContext": {
+    "application": {
+      "appVersion": "7.9.0",
+      "wakeupStatus": false
+    },
+    "device": {
+      "channel": 10001,
+      "model": "PACM00"
+    },
+    "dialog": {
+      "contextId": "20210525sandbox",
+      "expIds": [],
+      "predict": false,
+      "recordId": "4b0a9d82-c360-4623-a2f7-ae621c0d2235",
+      "serialId": 0,
+      "sessionId": "dd33ed64-4288-4b04-93d7-8a99b33a9e76"
+    },
+    "extension": {
+      "audioPlayer": {
+        "voiceStatus": 0
+      },
+      "wakeup_status": "false",
+      "wakeupStatus": "false",
+      "voiceStatus": "0",
+      "video_status": "0",
+      "videoStatus": "0",
+      "videoPlayer": {
+        "videoStatus": 0
+      }
+    },
+    "user": {
+      "deviceId": "66666666661779862",
+      "imei": "66666666661779862",
+      "openId": {}
+    }
+  },
+  "domainList": [
+    {
+      "confidence": 0.975,
+      "id": 119,
+      "intents": [
+        {
+          "classifySlots": [
+            {
+              "name": "photo_local",
+              "slotContentList": [
+                {
+                  "end": -1,
+                  "rawValue": "下载",
+                  "start": -1,
+                  "value": "下载"
+                }
+              ],
+              "valueType": "string"
+            }
+          ],
+          "confidence": 0.98,
+          "name": "photo_download_photo"
+        }
+      ],
+      "name": "photo",
+      "nluInfo": {
+        "extend": {
+          "realType": "{\"下载\":\"string\"}",
+          "predictFlag": "mixed",
+          "timestamp": "20210524-15:24:57"
+        },
+        "rewriteQuery": ""
+      },
+      "nluName": "systemAiClassifier"
+    },
+    {
+      "confidence": 0.85,
+      "id": 26,
+      "intents": [
+        {
+          "classifySlots": [
+            {
+              "name": "app_name",
+              "slotContentList": [
+                {
+                  "end": 8,
+                  "rawValue": "美秀图片",
+                  "start": 4,
+                  "value": "美秀图片"
+                }
+              ],
+              "valueType": "string"
+            },
+            {
+              "name": "app_type",
+              "slotContentList": [
+                {
+                  "end": 8,
+                  "rawValue": "美秀图片",
+                  "start": 4,
+                  "value": "yellow"
+                }
+              ],
+              "valueType": "string"
+            }
+          ],
+          "confidence": 0.999254584312439,
+          "name": "app_install"
+        }
+      ],
+      "name": "app",
+      "nluInfo": {
+        "extend": {
+          "realType": "{\"美秀图片\":\"string\",\"yellow\":\"string\"}",
+          "predictFlag": "mixed",
+          "timestamp": "20210524-15:24:57"
+        },
+        "rewriteQuery": ""
+      },
+      "nluName": "systemAiClassifier"
+    }
+  ]
+}

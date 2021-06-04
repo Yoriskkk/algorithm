@@ -1,0 +1,159 @@
+{
+  "code": "00010",
+  "dialogManagerRequest": {
+    "centerInfo": {
+      "dialogPolicy": {},
+      "intentSchedule": {}
+    },
+    "clientContext": {
+      "application": {
+        "appVersion": "5.3.0",
+        "wakeupStatus": false
+      },
+      "device": {
+        "channel": 20001,
+        "clientOsVersion": "6.0",
+        "model": "PACM00"
+      },
+      "dialog": {
+        "contextId": "20210603sandbox",
+        "expIds": [],
+        "predict": false,
+        "recordId": "5bbb78e2-8f01-4ed8-86d3-c98f76ac3f03",
+        "serialId": 0,
+        "sessionId": "71b9ce55-a0a5-4869-bd95-29975ac5b046"
+      },
+      "extension": {
+        "audioPlayer": {
+          "voiceStatus": 0
+        },
+        "wakeup_status": "false",
+        "wakeupStatus": "false",
+        "voiceStatus": "0",
+        "video_status": "0",
+        "videoStatus": "0",
+        "videoPlayer": {
+          "videoStatus": 0
+        }
+      },
+      "user": {
+        "deviceId": "66666666661416483",
+        "imei": "66666666661416483",
+        "openId": {}
+      }
+    },
+    "domains": [
+      {
+        "confidence": 0.8,
+        "id": 15222,
+        "intents": [
+          {
+            "classifySlots": [
+              {
+                "name": "phone",
+                "slotContentList": [
+                  {
+                    "end": 5,
+                    "rawValue": "reno3",
+                    "start": 0,
+                    "value": "reno3"
+                  }
+                ],
+                "valueType": "String"
+              }
+            ],
+            "confidence": 1.0,
+            "name": "custom_service_5g"
+          }
+        ],
+        "name": "custom_service",
+        "nluInfo": {
+          "extend": {
+            "realType": "{\"reno3\":\"String\"}",
+            "predictFlag": "model",
+            "group": ""
+          }
+        },
+        "nluName": "cdsAiClassifier"
+      },
+      {
+        "confidence": 0.79,
+        "intents": [
+          {
+            "classifySlots": [],
+            "confidence": -1.1092023755002707,
+            "name": "custom_service_faq_accept"
+          }
+        ],
+        "name": "custom_service_faq",
+        "nluInfo": {
+          "extend": {
+            "std_ques": "reno3是否支持5g",
+            "source_std_ques": "Reno3是否支持5G",
+            "faq_answer": "Reno3是OPPO首款双模5G手机，更多信息敬请关注<a target=\"_blank\" href=\"https://www.oppo.com/cn/\">OPPO官网</a>哦~",
+            "intent": "faq",
+            "predictFlag": "mixed",
+            "timestamp": "20210602-14:44:01",
+            "rq": ""
+          },
+          "rewriteQuery": ""
+        },
+        "nluName": "customServiceFaqAiClassifier"
+      },
+      {
+        "confidence": 0.88,
+        "intents": [
+          {
+            "classifySlots": [
+              {
+                "name": "phone",
+                "slotContentList": [
+                  {
+                    "end": 5,
+                    "rawValue": "reno3",
+                    "start": 0,
+                    "value": "reno3"
+                  }
+                ],
+                "valueType": "String"
+              }
+            ],
+            "confidence": 1.0,
+            "name": "custom_service_parameter"
+          }
+        ],
+        "name": "custom_service",
+        "nluInfo": {
+          "extend": {
+            "realType": "{\"reno3\":\"String\"}",
+            "predictFlag": "model",
+            "group": ""
+          }
+        },
+        "nluName": "cdsAiClassifier"
+      }
+    ],
+    "queries": [
+      {
+        "confidence": 1.0,
+        "pinyin": [
+          "r",
+          "e",
+          "n",
+          "o",
+          "3",
+          "SHI",
+          "5",
+          "G",
+          "SHOU",
+          "JI",
+          "MA"
+        ],
+        "text": "reno3是5G手机吗",
+        "type": 1
+      }
+    ]
+  },
+  "message": "策略执行成功",
+  "mode": "kefu"
+}
