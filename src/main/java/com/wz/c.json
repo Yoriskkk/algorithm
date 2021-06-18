@@ -6,115 +6,71 @@
     },
     "device": {
       "channel": 10001,
-      "model": "PACM00"
+      "clientOsVersion": "8.1",
+      "model": "PEGT00"
     },
     "dialog": {
-      "contextId": "20210525sandbox",
-      "expIds": [],
+      "contextId": "a2d65e18-8ade-4838-b1be-0a1ce4deef13",
+      "expIds": [
+        "106"
+      ],
       "predict": false,
-      "recordId": "4b0a9d82-c360-4623-a2f7-ae621c0d2235",
-      "serialId": 0,
-      "sessionId": "dd33ed64-4288-4b04-93d7-8a99b33a9e76"
+      "recordId": "928107c9-a47d-40ed-b1b5-a7659d38b35e_2",
+      "serialId": 2,
+      "sessionId": "ad9c39c9-ca9a-4d7f-a2e0-8b810518e66e"
     },
     "extension": {
-      "audioPlayer": {
-        "voiceStatus": 0
-      },
       "wakeup_status": "false",
-      "wakeupStatus": "false",
-      "voiceStatus": "0",
+      "quickAppCardVersion": "\"16\"",
+      "activateType": "\"17\"",
       "video_status": "0",
+      "audioSwitch": "\"true\"",
+      "timeZone": "\"GMT+08:00\"",
+      "debugId": "\"\"",
+      "iotType": "null",
       "videoStatus": "0",
+      "toneRole": "\"xiaoou_female\"",
       "videoPlayer": {
         "videoStatus": 0
-      }
+      },
+      "audioPlayer": {
+        "voiceStatus": 1
+      },
+      "wakeupStatus": "false",
+      "voiceStatus": "1",
+      "androidVersion": "\"11.0\"",
+      "carLinkVersion": "\"101006\"",
+      "defaultMusicApp": "\"DEFAULT\""
     },
     "user": {
-      "deviceId": "66666666661779862",
-      "imei": "66666666661779862",
-      "openId": {}
+      "deviceId": "",
+      "imei": "",
+      "openId": {
+        "apid": "",
+        "auid": "44E5CD9ED312473D9D1B49FD2EAF8768f2576e9eed591b4c4068e1fac6fd6016",
+        "duid": "7F88C7F5E2654673A800426C2B805C35EC7D424979CC9C51198A3163B293C015",
+        "guid": "",
+        "ouid": "B099211138D64ABB820420DC63AAD14F080d6bf311b9ef7b9dfdda97b2164ce1"
+      }
     }
   },
   "domainList": [
     {
-      "confidence": 0.975,
-      "id": 119,
+      "confidence": 1.0003,
+      "id": 25,
       "intents": [
         {
-          "classifySlots": [
-            {
-              "name": "photo_local",
-              "slotContentList": [
-                {
-                  "end": -1,
-                  "rawValue": "下载",
-                  "start": -1,
-                  "value": "下载"
-                }
-              ],
-              "valueType": "string"
-            }
-          ],
-          "confidence": 0.98,
-          "name": "photo_download_photo"
+          "name": "alarm_create"
         }
       ],
-      "name": "photo",
+      "name": "alarm",
       "nluInfo": {
         "extend": {
-          "realType": "{\"下载\":\"string\"}",
-          "predictFlag": "mixed",
-          "timestamp": "20210524-15:24:57"
-        },
-        "rewriteQuery": ""
-      },
-      "nluName": "systemAiClassifier"
-    },
-    {
-      "confidence": 0.85,
-      "id": 26,
-      "intents": [
-        {
-          "classifySlots": [
-            {
-              "name": "app_name",
-              "slotContentList": [
-                {
-                  "end": 8,
-                  "rawValue": "美秀图片",
-                  "start": 4,
-                  "value": "美秀图片"
-                }
-              ],
-              "valueType": "string"
-            },
-            {
-              "name": "app_type",
-              "slotContentList": [
-                {
-                  "end": 8,
-                  "rawValue": "美秀图片",
-                  "start": 4,
-                  "value": "yellow"
-                }
-              ],
-              "valueType": "string"
-            }
-          ],
-          "confidence": 0.999254584312439,
-          "name": "app_install"
+          "recommend_flag": "retain-weak"
         }
-      ],
-      "name": "app",
-      "nluInfo": {
-        "extend": {
-          "realType": "{\"美秀图片\":\"string\",\"yellow\":\"string\"}",
-          "predictFlag": "mixed",
-          "timestamp": "20210524-15:24:57"
-        },
-        "rewriteQuery": ""
       },
-      "nluName": "systemAiClassifier"
+      "nluName": "chatAiClassifier"
     }
-  ]
+  ],
+  "option": []
 }

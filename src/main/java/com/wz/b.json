@@ -1,8 +1,4 @@
 {
-  "centerInfo": {
-    "dialogPolicy": {},
-    "intentSchedule": {}
-  },
   "clientContext": {
     "application": {
       "appVersion": "7.9.0",
@@ -10,136 +6,319 @@
     },
     "device": {
       "channel": 10001,
-      "model": "PACM00"
+      "clientOsVersion": "8.1",
+      "model": "PEGT00"
     },
     "dialog": {
-      "contextId": "20210525sandbox",
-      "expIds": [],
+      "contextId": "a2d65e18-8ade-4838-b1be-0a1ce4deef13",
+      "expIds": [
+        "106"
+      ],
       "predict": false,
-      "recordId": "4b0a9d82-c360-4623-a2f7-ae621c0d2235",
-      "serialId": 0,
-      "sessionId": "dd33ed64-4288-4b04-93d7-8a99b33a9e76"
+      "recordId": "928107c9-a47d-40ed-b1b5-a7659d38b35e_2",
+      "serialId": 2,
+      "sessionId": "ad9c39c9-ca9a-4d7f-a2e0-8b810518e66e"
     },
     "extension": {
-      "audioPlayer": {
-        "voiceStatus": 0
-      },
       "wakeup_status": "false",
-      "wakeupStatus": "false",
-      "voiceStatus": "0",
+      "quickAppCardVersion": "\"16\"",
+      "activateType": "\"17\"",
       "video_status": "0",
+      "audioSwitch": "\"true\"",
+      "timeZone": "\"GMT+08:00\"",
+      "debugId": "\"\"",
+      "iotType": "null",
       "videoStatus": "0",
+      "toneRole": "\"xiaoou_female\"",
       "videoPlayer": {
         "videoStatus": 0
-      }
+      },
+      "audioPlayer": {
+        "voiceStatus": 1
+      },
+      "wakeupStatus": "false",
+      "voiceStatus": "1",
+      "androidVersion": "\"11.0\"",
+      "carLinkVersion": "\"101006\"",
+      "defaultMusicApp": "\"DEFAULT\""
     },
     "user": {
-      "deviceId": "66666666661779862",
-      "imei": "66666666661779862",
-      "openId": {}
+      "deviceId": "",
+      "imei": "",
+      "openId": {
+        "apid": "",
+        "auid": "44E5CD9ED312473D9D1B49FD2EAF8768f2576e9eed591b4c4068e1fac6fd6016",
+        "duid": "7F88C7F5E2654673A800426C2B805C35EC7D424979CC9C51198A3163B293C015",
+        "guid": "",
+        "ouid": "B099211138D64ABB820420DC63AAD14F080d6bf311b9ef7b9dfdda97b2164ce1"
+      }
     }
   },
-  "domainList": [
-    {
-      "confidence": 0.975,
-      "id": 119,
-      "intents": [
+  "dialogRequest": {
+    "domains": [
+      {
+        "confidence": 0.9993,
+        "id": 25,
+        "intents": [
+          {
+            "classifySlots": [],
+            "confidence": 1.0,
+            "name": "alarm_delete_previous"
+          }
+        ],
+        "name": "alarm",
+        "nluInfo": {
+          "extend": {
+            "predictFlag": "model",
+            "timestamp": "20210615-19:37:40"
+          },
+          "rewriteQuery": ""
+        },
+        "nluName": "systemAiClassifier"
+      },
+      {
+        "confidence": 0.3,
+        "id": 10857,
+        "intents": [
+          {
+            "classifySlots": [
+              {
+                "name": "keyword",
+                "slotContentList": [
+                  {
+                    "end": 7,
+                    "rawValue": "删除上一个闹钟",
+                    "start": 0,
+                    "value": "删除上一个闹钟"
+                  }
+                ]
+              }
+            ],
+            "confidence": 1.0,
+            "name": "tv_search"
+          }
+        ],
+        "name": "media",
+        "nluInfo": {
+          "extend": {
+            "predictFlag": "rule",
+            "group": ""
+          }
+        },
+        "nluName": "cdsAiClassifier"
+      }
+    ],
+    "queries": [
+      {
+        "confidence": 1.0,
+        "pinyin": [
+          "SHAN",
+          "CHU",
+          "SHANG",
+          "YI",
+          "GE",
+          "NAO",
+          "ZHONG"
+        ],
+        "text": "删除上一个闹钟",
+        "type": 1
+      },
+      {
+        "confidence": 1.0,
+        "pinyin": [
+          "SHAN",
+          "CHU",
+          "SHANG",
+          "YI",
+          "GE",
+          "NAO",
+          "ZHONG"
+        ],
+        "text": "删除上一个闹钟",
+        "type": 0
+      }
+    ]
+  },
+  "ds": {
+    "centerInfo": {
+      "dialogInteractions": [
         {
-          "classifySlots": [
+          "classifyResult": [
             {
-              "name": "photo_local",
+              "confidence": 0.9993,
+              "id": 25,
+              "intents": [
+                {
+                  "classifySlots": [
+                    {
+                      "name": "alarm_date",
+                      "slotContentList": [
+                        {
+                          "end": -1,
+                          "rawValue": "9点",
+                          "start": -1,
+                          "value": "2021-06-16"
+                        }
+                      ],
+                      "valueType": "string"
+                    },
+                    {
+                      "name": "alarm_time",
+                      "slotContentList": [
+                        {
+                          "end": -1,
+                          "rawValue": "9点",
+                          "start": -1,
+                          "value": "21:00:00"
+                        }
+                      ],
+                      "valueType": "string"
+                    },
+                    {
+                      "name": "relative_time_second",
+                      "slotContentList": [
+                        {
+                          "end": -1,
+                          "rawValue": "0",
+                          "start": -1,
+                          "value": "0"
+                        }
+                      ],
+                      "valueType": "string"
+                    }
+                  ],
+                  "confidence": 1.0000100135803223,
+                  "name": "alarm_create"
+                }
+              ],
+              "name": "alarm",
+              "nluInfo": {
+                "extend": {
+                  "realType": "{\"0\":\"string\",\"2021-06-16\":\"string\",\"21:00:00\":\"string\"}",
+                  "timestamp": "20210615-19:37:40",
+                  "predictFlag": "model"
+                }
+              },
+              "nluName": "systemAiClassifier"
+            }
+          ],
+          "dstHeader": {
+            "recordId": "c6beda5f-019c-4f73-b185-ce0e80bf22f9_1",
+            "sessionId": "fc852692-6b11-413c-adf7-75b6aa904c49"
+          },
+          "sysAction": {
+            "intentName": "alarm_create",
+            "latestDialogUnCompleted": false,
+            "multiOrWeak": false,
+            "skillId": 25
+          },
+          "userAction": {
+            "queries": [
+              {
+                "confidence": 1.0,
+                "pinyin": [
+                  "XIN",
+                  "JIAN",
+                  "JIU",
+                  "DIAN",
+                  "NAO",
+                  "ZHONG"
+                ],
+                "text": "新建九点闹钟",
+                "type": 1
+              },
+              {
+                "confidence": 1.0,
+                "pinyin": [
+                  "XIN",
+                  "JIAN",
+                  "JIU",
+                  "DIAN",
+                  "NAO",
+                  "ZHONG"
+                ],
+                "text": "新建九点闹钟",
+                "type": 0
+              }
+            ]
+          }
+        }
+      ],
+      "dialogPolicy": {
+        "continuedDialog": {
+          "count": 1,
+          "skillId": 25
+        }
+      },
+      "intentSchedule": {
+        "dmInfo": {
+          "askSlotIndex": {},
+          "confidence": 0.9993,
+          "dialogState": "weak-completed",
+          "dmSlots": [
+            {
+              "name": "alarm_date",
               "slotContentList": [
                 {
                   "end": -1,
-                  "rawValue": "下载",
+                  "rawValue": "",
                   "start": -1,
-                  "value": "下载"
-                }
-              ],
-              "valueType": "string"
-            }
-          ],
-          "confidence": 0.98,
-          "name": "photo_download_photo"
-        }
-      ],
-      "name": "photo",
-      "nluInfo": {
-        "extend": {
-          "realType": "{\"下载\":\"string\"}",
-          "predictFlag": "mixed",
-          "timestamp": "20210524-15:24:57"
-        },
-        "rewriteQuery": ""
-      },
-      "nluName": "systemAiClassifier"
-    },
-    {
-      "confidence": 0.85,
-      "id": 26,
-      "intents": [
-        {
-          "classifySlots": [
-            {
-              "name": "app_name",
-              "slotContentList": [
-                {
-                  "end": 8,
-                  "rawValue": "美秀图片",
-                  "start": 4,
-                  "value": "美秀图片"
+                  "value": "2021-06-16"
                 }
               ],
               "valueType": "string"
             },
             {
-              "name": "app_type",
+              "name": "alarm_time",
               "slotContentList": [
                 {
-                  "end": 8,
-                  "rawValue": "美秀图片",
-                  "start": 4,
-                  "value": "yellow"
+                  "end": -1,
+                  "rawValue": "9点",
+                  "start": -1,
+                  "value": "21:00:00"
+                }
+              ],
+              "valueType": "string"
+            },
+            {
+              "name": "relative_time_second",
+              "slotContentList": [
+                {
+                  "end": -1,
+                  "rawValue": "0",
+                  "start": -1,
+                  "value": "0"
                 }
               ],
               "valueType": "string"
             }
           ],
-          "confidence": 0.999254584312439,
-          "name": "app_install"
+          "extend": {
+            "isAlarm": true
+          },
+          "intent": "alarm_create",
+          "skillId": 25,
+          "skillName": "alarm"
         }
-      ],
-      "name": "app",
-      "nluInfo": {
-        "extend": {
-          "realType": "{\"美秀图片\":\"string\",\"yellow\":\"string\"}",
-          "predictFlag": "mixed",
-          "timestamp": "20210524-15:24:57"
-        },
-        "rewriteQuery": ""
-      },
-      "nluName": "systemAiClassifier"
-    }
-  ],
+      }
+    },
+    "dialogState": "weak-completed"
+  },
   "lastRankDomainList": [],
-  "queries": [
+  "skills": [
     {
-      "confidence": 1.0,
-      "pinyin": [
-        "XIAO",
-        "BU",
-        "TONG",
-        "XUE",
-        "XIA",
-        "ZAI",
-        "MEI",
-        "XIU",
-        "TU",
-        "PIAN",
-        "A"
-      ],
-      "text": "小布同学下载美秀图片啊",
-      "type": 1
+      "domainId": 25,
+      "domainName": "alarm",
+      "intentName": "alarm_delete_previous",
+      "skillId": 25,
+      "skillName": "alarm"
+    },
+    {
+      "domainId": 10857,
+      "domainName": "media",
+      "intentName": "tv_search",
+      "skillId": 10857,
+      "skillName": "media"
     }
   ]
 }
