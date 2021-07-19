@@ -1,104 +1,115 @@
 {
   "clientContext": {
     "application": {
-      "appVersion": "7.9.0",
+      "appVersion": "5.3.0",
       "wakeupStatus": false
     },
     "device": {
-      "channel": 10001,
-      "clientOsVersion": "8.1",
-      "model": "PEGT00"
+      "channel": 20001,
+      "clientOsVersion": "6.0",
+      "model": "PACM00"
     },
     "dialog": {
-      "contextId": "a2d65e18-8ade-4838-b1be-0a1ce4deef13",
-      "expIds": [
-        "106"
-      ],
+      "contextId": "20210712sandbox",
+      "expIds": [],
       "predict": false,
-      "recordId": "928107c9-a47d-40ed-b1b5-a7659d38b35e_2",
-      "serialId": 2,
-      "sessionId": "ad9c39c9-ca9a-4d7f-a2e0-8b810518e66e"
+      "recordId": "6111e324-c98e-44ae-b89e-33aef57b695e",
+      "serialId": 0,
+      "sessionId": "031cf756-e5dd-449a-a3ec-bba880b74a0e"
     },
     "extension": {
+      "audioPlayer": {
+        "voiceStatus": 0
+      },
       "wakeup_status": "false",
-      "quickAppCardVersion": "\"16\"",
-      "activateType": "\"17\"",
+      "wakeupStatus": "false",
+      "voiceStatus": "0",
       "video_status": "0",
-      "audioSwitch": "\"true\"",
-      "timeZone": "\"GMT+08:00\"",
-      "debugId": "\"\"",
-      "iotType": "null",
       "videoStatus": "0",
-      "toneRole": "\"xiaoou_female\"",
       "videoPlayer": {
         "videoStatus": 0
-      },
-      "audioPlayer": {
-        "voiceStatus": 1
-      },
-      "wakeupStatus": "false",
-      "voiceStatus": "1",
-      "androidVersion": "\"11.0\"",
-      "carLinkVersion": "\"101006\"",
-      "defaultMusicApp": "\"DEFAULT\""
+      }
     },
     "user": {
-      "deviceId": "",
-      "imei": "",
-      "openId": {
-        "apid": "",
-        "auid": "44E5CD9ED312473D9D1B49FD2EAF8768f2576e9eed591b4c4068e1fac6fd6016",
-        "duid": "7F88C7F5E2654673A800426C2B805C35EC7D424979CC9C51198A3163B293C015",
-        "guid": "",
-        "ouid": "B099211138D64ABB820420DC63AAD14F080d6bf311b9ef7b9dfdda97b2164ce1"
-      }
+      "deviceId": "66666666661585925",
+      "imei": "66666666661585925",
+      "openId": {}
     }
   },
   "dialogRequest": {
     "domains": [
       {
-        "confidence": 0.9993,
-        "id": 25,
-        "intents": [
-          {
-            "classifySlots": [],
-            "confidence": 1.0,
-            "name": "alarm_delete_previous"
-          }
-        ],
-        "name": "alarm",
-        "nluInfo": {
-          "extend": {
-            "predictFlag": "model",
-            "timestamp": "20210615-19:37:40"
-          },
-          "rewriteQuery": ""
-        },
-        "nluName": "systemAiClassifier"
-      },
-      {
-        "confidence": 0.3,
-        "id": 10857,
+        "confidence": 0.79,
+        "id": 33,
         "intents": [
           {
             "classifySlots": [
               {
-                "name": "keyword",
+                "name": "entity",
                 "slotContentList": [
                   {
-                    "end": 7,
-                    "rawValue": "删除上一个闹钟",
-                    "start": 0,
-                    "value": "删除上一个闹钟"
+                    "end": -1,
+                    "rawValue": "价格",
+                    "start": -1,
+                    "value": "价格"
                   }
-                ]
+                ],
+                "valueType": "string"
               }
             ],
             "confidence": 1.0,
-            "name": "tv_search"
+            "name": "entity"
           }
         ],
-        "name": "media",
+        "name": "entity",
+        "nluInfo": {
+          "extend": {
+            "realType": "{\"价格\":\"string\"}",
+            "disambiguator": "{\"entity\": {\"skip_kg\": \"true\", \"skip_media_entity\": \"true\"}}",
+            "predict": "rule",
+            "version": "1.0",
+            "entity": "{\"skip_kg\": \"true\", \"skip_media_entity\": \"true\"}",
+            "timestamp": "20210712-11:52:05"
+          },
+          "rewriteQuery": "价格是什么意思"
+        },
+        "nluName": "informationAiClassifier"
+      },
+      {
+        "confidence": 0.79,
+        "intents": [
+          {
+            "classifySlots": [],
+            "confidence": -10.956398,
+            "name": "custom_service_faq_accept"
+          }
+        ],
+        "name": "custom_service_faq",
+        "nluInfo": {
+          "extend": {
+            "std_ques": "阅读资费标准的介绍",
+            "source_std_ques": "阅读资费标准的介绍",
+            "faq_answer": "阅读APP部分书籍是按本购买，部分书籍则是按每千字进行购买，具体价格会在购买页面展示。\n温馨提示：\n部分书籍会有限时免费和限时打折活动，价格会有浮动，建议关注阅读APP内的活动信息。",
+            "intent": "faq",
+            "predictFlag": "mixed",
+            "rq": "",
+            "timestamp": "20210706-09:44:14"
+          },
+          "rewriteQuery": ""
+        },
+        "nluName": "customServiceFaqAiClassifier"
+      },
+      {
+        "confidence": 0.8,
+        "id": 15222,
+        "intents": [
+          {
+            "classifySlots": [],
+            "confidence": 1.0,
+            "name": "custom_service_price"
+          }
+        ],
+        "name": "custom_service",
         "nluInfo": {
           "extend": {
             "predictFlag": "rule",
@@ -112,30 +123,11 @@
       {
         "confidence": 1.0,
         "pinyin": [
-          "SHAN",
-          "CHU",
-          "SHANG",
-          "YI",
-          "GE",
-          "NAO",
-          "ZHONG"
+          "JIA",
+          "GE"
         ],
-        "text": "删除上一个闹钟",
+        "text": "价格",
         "type": 1
-      },
-      {
-        "confidence": 1.0,
-        "pinyin": [
-          "SHAN",
-          "CHU",
-          "SHANG",
-          "YI",
-          "GE",
-          "NAO",
-          "ZHONG"
-        ],
-        "text": "删除上一个闹钟",
-        "type": 0
       }
     ]
   },
@@ -145,100 +137,88 @@
         {
           "classifyResult": [
             {
-              "confidence": 0.9993,
-              "id": 25,
+              "confidence": 0.8,
+              "id": 15222,
               "intents": [
                 {
                   "classifySlots": [
                     {
-                      "name": "alarm_date",
+                      "name": "phone",
                       "slotContentList": [
                         {
-                          "end": -1,
-                          "rawValue": "9点",
-                          "start": -1,
-                          "value": "2021-06-16"
+                          "end": 5,
+                          "rawValue": "reno4",
+                          "start": 0,
+                          "value": "reno4"
                         }
                       ],
-                      "valueType": "string"
-                    },
-                    {
-                      "name": "alarm_time",
-                      "slotContentList": [
-                        {
-                          "end": -1,
-                          "rawValue": "9点",
-                          "start": -1,
-                          "value": "21:00:00"
-                        }
-                      ],
-                      "valueType": "string"
-                    },
-                    {
-                      "name": "relative_time_second",
-                      "slotContentList": [
-                        {
-                          "end": -1,
-                          "rawValue": "0",
-                          "start": -1,
-                          "value": "0"
-                        }
-                      ],
-                      "valueType": "string"
+                      "valueType": "String"
                     }
                   ],
-                  "confidence": 1.0000100135803223,
-                  "name": "alarm_create"
+                  "confidence": 1.0,
+                  "name": "custom_service_parameter"
                 }
               ],
-              "name": "alarm",
+              "name": "custom_service",
               "nluInfo": {
                 "extend": {
-                  "realType": "{\"0\":\"string\",\"2021-06-16\":\"string\",\"21:00:00\":\"string\"}",
-                  "timestamp": "20210615-19:37:40",
+                  "realType": "{\"reno4\":\"String\"}",
+                  "group": "",
                   "predictFlag": "model"
                 }
               },
-              "nluName": "systemAiClassifier"
+              "nluName": "cdsAiClassifier"
+            },
+            {
+              "confidence": 0.79,
+              "intents": [
+                {
+                  "classifySlots": [],
+                  "confidence": -0.8987001932168142,
+                  "name": "custom_service_faq_accept"
+                }
+              ],
+              "name": "custom_service_faq",
+              "nluInfo": {
+                "extend": {
+                  "std_ques": "reno4的参数介绍",
+                  "source_std_ques": "Reno4的参数介绍",
+                  "faq_answer": "OPPO视频手机Reno4搭载高通骁龙765G处理器、65W超级闪充技术，支持超级夜景视频。更有自研Reno Glow 晶钻工艺，使得手机外壳更加防指纹、耐刮花。无论干手湿手，握起来都不油腻，不沾指纹，清爽干净，用多久都像新手机。更多Reno4产品信息，您可以关注<a target=\" \" href=\"https://www.oppo.com/cn/\">OPPO官网</a>进行了解哦~",
+                  "intent": "faq",
+                  "timestamp": "20210706-09:46:04",
+                  "rq": "",
+                  "predictFlag": "mixed"
+                }
+              },
+              "nluName": "customServiceFaqAiClassifier"
             }
           ],
           "dstHeader": {
-            "recordId": "c6beda5f-019c-4f73-b185-ce0e80bf22f9_1",
-            "sessionId": "fc852692-6b11-413c-adf7-75b6aa904c49"
+            "recordId": "2ea7701f-f255-48b2-bc91-271ebd2fd4f4",
+            "sessionId": "6dd35fb5-d531-4e89-a12f-053b3f3c2c86"
           },
           "sysAction": {
-            "intentName": "alarm_create",
+            "answer": "OPPO视频手机Reno4搭载高通骁龙765G处理器、65W超级闪充技术，支持超级夜景视频。更有自研Reno Glow 晶钻工艺，使得手机外壳更加防指纹、耐刮花。无论干手湿手，握起来都不油腻，不沾指纹，清爽干净，用多久都像新手机。更多Reno4产品信息，您可以关注<a target=\" \" href=\"https://www.oppo.com/cn/\">OPPO官网</a>进行了解哦~",
+            "intentName": "custom_service_parameter",
             "latestDialogUnCompleted": false,
             "multiOrWeak": false,
-            "skillId": 25
+            "skillId": 15222
           },
           "userAction": {
             "queries": [
               {
                 "confidence": 1.0,
                 "pinyin": [
-                  "XIN",
-                  "JIAN",
-                  "JIU",
-                  "DIAN",
-                  "NAO",
-                  "ZHONG"
+                  "r",
+                  "e",
+                  "n",
+                  "o",
+                  "4",
+                  "CAN",
+                  "SHU"
                 ],
-                "text": "新建九点闹钟",
+                "text": "reno4参数",
                 "type": 1
-              },
-              {
-                "confidence": 1.0,
-                "pinyin": [
-                  "XIN",
-                  "JIAN",
-                  "JIU",
-                  "DIAN",
-                  "NAO",
-                  "ZHONG"
-                ],
-                "text": "新建九点闹钟",
-                "type": 0
               }
             ]
           }
@@ -247,78 +227,58 @@
       "dialogPolicy": {
         "continuedDialog": {
           "count": 1,
-          "skillId": 25
+          "skillId": 15222
         }
       },
       "intentSchedule": {
         "dmInfo": {
           "askSlotIndex": {},
-          "confidence": 0.9993,
-          "dialogState": "weak-completed",
+          "confidence": 0.8,
+          "dialogState": "completed",
           "dmSlots": [
             {
-              "name": "alarm_date",
+              "name": "phone",
               "slotContentList": [
                 {
-                  "end": -1,
-                  "rawValue": "",
-                  "start": -1,
-                  "value": "2021-06-16"
+                  "end": 5,
+                  "rawValue": "reno4",
+                  "start": 0,
+                  "value": "reno4"
                 }
               ],
-              "valueType": "string"
-            },
-            {
-              "name": "alarm_time",
-              "slotContentList": [
-                {
-                  "end": -1,
-                  "rawValue": "9点",
-                  "start": -1,
-                  "value": "21:00:00"
-                }
-              ],
-              "valueType": "string"
-            },
-            {
-              "name": "relative_time_second",
-              "slotContentList": [
-                {
-                  "end": -1,
-                  "rawValue": "0",
-                  "start": -1,
-                  "value": "0"
-                }
-              ],
-              "valueType": "string"
+              "valueType": "String"
             }
           ],
-          "extend": {
-            "isAlarm": true
-          },
-          "intent": "alarm_create",
-          "skillId": 25,
-          "skillName": "alarm"
+          "extend": {},
+          "intent": "custom_service_parameter",
+          "skillId": 15222,
+          "skillName": "custom_service"
         }
       }
     },
-    "dialogState": "weak-completed"
+    "dialogState": "started"
   },
   "lastRankDomainList": [],
   "skills": [
     {
-      "domainId": 25,
-      "domainName": "alarm",
-      "intentName": "alarm_delete_previous",
-      "skillId": 25,
-      "skillName": "alarm"
+      "domainId": 33,
+      "domainName": "entity",
+      "intentName": "entity",
+      "skillId": 33,
+      "skillName": "entity"
     },
     {
-      "domainId": 10857,
-      "domainName": "media",
-      "intentName": "tv_search",
-      "skillId": 10857,
-      "skillName": "media"
+      "domainName": "custom_service_faq",
+      "intentName": "custom_service_faq_accept",
+      "skillId": 15222,
+      "skillName": "custom_service"
+    },
+    {
+      "domainId": 15222,
+      "domainName": "custom_service",
+      "intentName": "custom_service_price",
+      "skillId": 15222,
+      "skillName": "custom_service"
     }
   ]
 }

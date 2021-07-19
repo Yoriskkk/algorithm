@@ -1,72 +1,164 @@
-[
-  {
-    "confidence": 0.79,
-    "id": 33,
-    "intents": [
-      {
-        "classifySlots": [
-          {
-            "name": "entity",
-            "slotContentList": [
-              {
-                "end": -1,
-                "rawValue": "善良",
-                "start": -1,
-                "value": "善良"
-              }
-            ],
-            "valueType": "string"
-          }
-        ],
-        "confidence": 1.0,
-        "name": "entity"
-      }
-    ],
-    "name": "entity",
-    "nluInfo": {
-      "extend": {
-        "realType": "{\"善良\":\"string\"}",
-        "disambiguator": "{\"entity\": {\"skip_kg\": \"true\", \"skip_media_entity\": \"true\"}}",
-        "predict": "rule",
-        "version": "1.0",
-        "entity": "{\"skip_kg\": \"true\", \"skip_media_entity\": \"true\"}",
-        "timestamp": "20210611-16:32:20"
+{
+  "clientContext": {
+    "application": {
+      "appVersion": "5.3.0",
+      "wakeupStatus": false
+    },
+    "device": {
+      "channel": 20001,
+      "clientOsVersion": "6.0",
+      "model": "PACM00"
+    },
+    "dialog": {
+      "contextId": "20210712sandbox",
+      "expIds": [],
+      "predict": false,
+      "recordId": "89d0739a-a26b-4abd-a4d9-a2641b7199f5",
+      "serialId": 0,
+      "sessionId": "1841e865-5134-4842-a7ed-9f39e2084db0"
+    },
+    "extension": {
+      "audioPlayer": {
+        "voiceStatus": 0
       },
-      "rewriteQuery": "善良是什么意思"
+      "wakeup_status": "false",
+      "wakeupStatus": "false",
+      "voiceStatus": "0",
+      "video_status": "0",
+      "videoStatus": "0",
+      "videoPlayer": {
+        "videoStatus": 0
+      }
     },
-    "nluName": "informationAiClassifier"
+    "user": {
+      "deviceId": "66666666661655072",
+      "imei": "66666666661655072",
+      "openId": {}
+    }
   },
-  {
-    "confidence": 0.35,
-    "id": 30,
-    "intents": [
+  "dialogRequest": {
+    "domains": [
       {
-        "classifySlots": [
+        "confidence": 0.79,
+        "id": 33,
+        "intents": [
           {
-            "name": "song_normal",
-            "slotContentList": [
+            "classifySlots": [
               {
-                "end": 2,
-                "rawValue": "善良",
-                "start": 0,
-                "value": "善良"
+                "name": "entity",
+                "slotContentList": [
+                  {
+                    "end": -1,
+                    "rawValue": "价格",
+                    "start": -1,
+                    "value": "价格"
+                  }
+                ],
+                "valueType": "string"
               }
             ],
-            "valueType": "String"
+            "confidence": 1.0,
+            "name": "entity"
           }
         ],
-        "confidence": 1.0,
-        "name": "music_normal"
+        "name": "entity",
+        "nluInfo": {
+          "extend": {
+            "realType": "{\"价格\":\"string\"}",
+            "disambiguator": "{\"entity\": {\"skip_kg\": \"true\", \"skip_media_entity\": \"true\"}}",
+            "predict": "rule",
+            "version": "1.0",
+            "entity": "{\"skip_kg\": \"true\", \"skip_media_entity\": \"true\"}",
+            "timestamp": "20210712-10:32:55"
+          },
+          "rewriteQuery": "价格是什么意思"
+        },
+        "nluName": "informationAiClassifier"
+      },
+      {
+        "confidence": 0.79,
+        "intents": [
+          {
+            "classifySlots": [],
+            "confidence": -11.010328,
+            "name": "custom_service_faq_accept"
+          }
+        ],
+        "name": "custom_service_faq",
+        "nluInfo": {
+          "extend": {
+            "std_ques": "阅读资费标准的介绍",
+            "source_std_ques": "阅读资费标准的介绍",
+            "faq_answer": "阅读APP部分书籍是按本购买，部分书籍则是按每千字进行购买，具体价格会在购买页面展示。\n温馨提示：\n部分书籍会有限时免费和限时打折活动，价格会有浮动，建议关注阅读APP内的活动信息。",
+            "intent": "faq",
+            "predictFlag": "mixed",
+            "rq": "",
+            "timestamp": "20210629-16:36:40"
+          },
+          "rewriteQuery": ""
+        },
+        "nluName": "customServiceFaqAiClassifier"
+      },
+      {
+        "confidence": 0.8,
+        "id": 15222,
+        "intents": [
+          {
+            "classifySlots": [],
+            "confidence": 1.0,
+            "name": "custom_service_price"
+          }
+        ],
+        "name": "custom_service",
+        "nluInfo": {
+          "extend": {
+            "predictFlag": "rule",
+            "group": ""
+          }
+        },
+        "nluName": "cdsAiClassifier"
       }
     ],
-    "name": "music",
-    "nluInfo": {
-      "extend": {
-        "realType": "{\"善良\":\"String\"}",
-        "predictFlag": "pure_entity",
-        "group": ""
+    "queries": [
+      {
+        "confidence": 1.0,
+        "pinyin": [
+          "JIA",
+          "GE"
+        ],
+        "text": "价格",
+        "type": 1
       }
+    ]
+  },
+  "ds": {
+    "centerInfo": {
+      "dialogPolicy": {},
+      "intentSchedule": {}
     },
-    "nluName": "cdsAiClassifier"
-  }
-]
+    "dialogState": "started"
+  },
+  "lastRankDomainList": [],
+  "skills": [
+    {
+      "domainId": 33,
+      "domainName": "entity",
+      "intentName": "entity",
+      "skillId": 33,
+      "skillName": "entity"
+    },
+    {
+      "domainName": "custom_service_faq",
+      "intentName": "custom_service_faq_accept",
+      "skillId": 15222,
+      "skillName": "custom_service"
+    },
+    {
+      "domainId": 15222,
+      "domainName": "custom_service",
+      "intentName": "custom_service_price",
+      "skillId": 15222,
+      "skillName": "custom_service"
+    }
+  ]
+}
